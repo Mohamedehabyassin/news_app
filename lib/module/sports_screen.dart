@@ -4,19 +4,20 @@ import 'package:news_app/shared/components/common_widget.dart';
 import 'package:news_app/shared/cubit/app_cubit.dart';
 import 'package:news_app/shared/cubit/app_states.dart';
 
-class BusinessScreen extends StatelessWidget {
-  const BusinessScreen({Key? key}) : super(key: key);
+class SportsScreen extends StatelessWidget {
+  const SportsScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<AppCubit, AppStates>(
         listener: (context, state) {},
         builder: (context, state) {
-          var list = AppCubit.get(context).business;
+          var list = AppCubit.get(context).sports;
           return (list.isNotEmpty)
               ? ListView.separated(
                   physics: const BouncingScrollPhysics(),
-                  itemBuilder: (context, index) => buildArticleItem(list[index],context),
+                  itemBuilder: (context, index) =>
+                      buildArticleItem(list[index],context),
                   separatorBuilder: (context, index) => const Divider(),
                   itemCount: list.length)
               : const Center(child: CircularProgressIndicator());
