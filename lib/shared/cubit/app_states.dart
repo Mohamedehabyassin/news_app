@@ -8,8 +8,6 @@ class ChangeAppModeState extends AppStates {}
 
 class BusinessSuccessState extends AppStates {}
 
-class BusinessLoadingState extends AppStates {}
-
 class BusinessErrorState extends AppStates {
   final String? error;
 
@@ -17,8 +15,6 @@ class BusinessErrorState extends AppStates {
 }
 
 class SportsSuccessState extends AppStates {}
-
-class SportsLoadingState extends AppStates {}
 
 class SportsErrorState extends AppStates {
   final String? error;
@@ -28,8 +24,6 @@ class SportsErrorState extends AppStates {
 
 class ScienceSuccessState extends AppStates {}
 
-class ScienceLoadingState extends AppStates {}
-
 class ScienceErrorState extends AppStates {
   final String? error;
 
@@ -37,8 +31,6 @@ class ScienceErrorState extends AppStates {
 }
 
 class SearchSuccessState extends AppStates {}
-
-class SearchLoadingState extends AppStates {}
 
 class SearchErrorState extends AppStates {
   final String? error;

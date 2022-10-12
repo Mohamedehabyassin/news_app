@@ -5,8 +5,7 @@ import 'package:news_app/shared/cubit/app_cubit.dart';
 import 'package:news_app/shared/cubit/app_states.dart';
 
 class SearchScreen extends StatelessWidget {
-  SearchScreen({Key? key}) : super(key: key);
-  final TextEditingController searchController = TextEditingController();
+  const SearchScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,22 +19,16 @@ class SearchScreen extends StatelessWidget {
               padding: const EdgeInsets.all(18.0),
               child: Column(
                 children: [
-                  appTextFormField(
-                      controller: searchController,
-                      type: TextInputType.text,
-                      onChange: (String value) {
-                        debugPrint(value);
-                        debugPrint(searchController.text);
-                        AppCubit.get(context).getSearch(value);
-                      },
-                      validate: (String value) {
-                        if (value.isEmpty) {
-                          return 'Search must not be Empty';
-                        }
-                        return null;
-                      },
-                      label: 'Search',
-                      prefix: Icons.search_sharp),
+                  TextFormField(
+                    decoration: const InputDecoration(
+                        labelText: 'Search',
+                        prefixIcon: Icon(Icons.search_sharp),
+                        border: OutlineInputBorder()),
+                    onChanged: (searchValue) {
+                      AppCubit.get(context).getSearch(searchValue);
+                    },
+                  ),
+                  const SizedBox(height: 30),
                   list.isNotEmpty
                       ? Expanded(
                           child: ListView.separated(

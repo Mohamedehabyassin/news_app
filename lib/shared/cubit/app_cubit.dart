@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_app/module/business_screen.dart';
 import 'package:news_app/module/science_screen.dart';
-import 'package:news_app/module/settings_screen.dart';
 import 'package:news_app/module/sports_screen.dart';
 import 'package:news_app/shared/cubit/app_states.dart';
 import 'package:news_app/shared/network/local/cache_helper.dart';
@@ -36,14 +35,12 @@ class AppCubit extends Cubit<AppStates> {
     BusinessScreen(),
     ScienceScreen(),
     SportsScreen(),
-    SettingsScreen()
   ];
 
   List<BottomNavigationBarItem> bottomItems = const [
     BottomNavigationBarItem(icon: Icon(Icons.business), label: 'Business'),
     BottomNavigationBarItem(icon: Icon(Icons.science), label: 'Science'),
     BottomNavigationBarItem(icon: Icon(Icons.sports_baseball), label: 'Sports'),
-    BottomNavigationBarItem(icon: Icon(Icons.settings), label: 'Settings'),
   ];
 
   void changeBottomNavbar(int index) {
@@ -54,7 +51,6 @@ class AppCubit extends Cubit<AppStates> {
   }
 
   void getBusiness() {
-    emit(BusinessLoadingState());
     DioHelper.getData(
       url: 'v2/top-headlines',
       query: {
@@ -72,8 +68,6 @@ class AppCubit extends Cubit<AppStates> {
   }
 
   void getSports() {
-    emit(SportsLoadingState());
-
     if (sports.isEmpty) {
       DioHelper.getData(
         url: 'v2/top-headlines',
@@ -95,8 +89,6 @@ class AppCubit extends Cubit<AppStates> {
   }
 
   void getScience() {
-    emit(ScienceLoadingState());
-
     if (science.isEmpty) {
       DioHelper.getData(
         url: 'v2/top-headlines',
@@ -118,7 +110,6 @@ class AppCubit extends Cubit<AppStates> {
   }
 
   void getSearch(String searchValue) {
-    emit(SearchLoadingState());
     DioHelper.getData(
       url: 'v2/everything',
       query: {
